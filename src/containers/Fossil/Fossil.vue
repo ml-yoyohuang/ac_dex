@@ -24,13 +24,13 @@ export default {
     },
     io() {
       const obj = {
-        fossil: this.checked,
+        fossil: this.checked.sort(),
       };
       return obj;
     },
     checkedFossils() {
       const found = this.fossils.filter((element) => this.checked.indexOf(element.id) > -1);
-      return found;
+      return found.sort((a, b) => a.id - b.id);
     },
   },
   mounted() {
