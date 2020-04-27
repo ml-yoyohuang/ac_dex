@@ -13,19 +13,24 @@ export default {
     fossils,
     checked: [0],
     filter: 0,
+    showImg: true,
+    showPrice: false,
   }),
   computed: {
     ...Vuex.mapState([]),
     ...Vuex.mapGetters([]),
     imagesPath() {
-      // return this.fossils.map((id) => require(`img/fossils/${id}.png`));
-      return this.fossils.map((item, index, array) => require(`img/fossils/${item.id}.png`));
+      return this.fossils.map((item) => require(`img/fossils/${item.id}.png`));
     },
     io() {
       const obj = {
         fossil: this.checked,
       };
       return obj;
+    },
+    checkedFossils() {
+      const found = this.fossils.filter((element) => this.checked.indexOf(element.id) > -1);
+      return found;
     },
   },
   mounted() {
@@ -62,15 +67,30 @@ export default {
         input(type="radio" name="filter2" v-model="filter" :value="2")
         i.module-symbol
         span.p 只顯示有的
+    .block-form
+      label.module-radio
+        input(type="checkbox" name="showimg" v-model="showImg")
+        i.module-symbol
+        span.p 顯示圖片
+    .block-form
+      label.module-radio
+        input(type="checkbox" name="showprice" v-model="showPrice")
+        i.module-symbol
+        span.p 顯示價格
   .row.gutter-10(:class="`filter${filter}`")
     .col.col-6.col-sm-4.col-md-3.col-lg-2.align-items-stretch(v-for="(item, index) in fossils" :class="{'is-checked' : isChecked(item.id)}")
       .col-inner.text-center
-        .square
+        .square.w-50.m-auto(v-show="showImg")
           img.d-block.w-100(:src="imagesPath[index]")
         .p {{item.id}}. {{item.name}}
-        .p ${{item.price}}
+        .p(v-if="showPrice") ${{item.price}}
         input(type="checkbox" :id="`fossil${item.id}`" :name="`fossil${item.id}`" :value="item.id" v-model="checked")
+  .p 匯出資訊：
   .p.textarea {{io}}
+  .p 複製文字：
+  .p.textarea
+    template(v-for="(item, index) in checkedFossils") {{item.name}}
+      br
 </template>
 
 <style lang="stylus">
@@ -125,7 +145,7 @@ body
   .col-inner
     position relative
     background-color #fff9e2
-    padding 0.5em
+    padding 10px
     height 100%
     box-shadow: 0px 0px 10px rgba(136, 201, 161, .8);
     input
