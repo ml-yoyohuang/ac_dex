@@ -24,12 +24,16 @@ export default {
     },
     io() {
       const obj = {
-        fossil: this.checked.sort(),
+        fossil: this.checked.sort((a, b) => a - b),
       };
       return obj;
     },
     checkedFossils() {
       const found = this.fossils.filter((element) => this.checked.indexOf(element.id) > -1);
+      return found.sort((a, b) => a.id - b.id);
+    },
+    notCheckedFossils() {
+      const found = this.fossils.filter((element) => this.checked.indexOf(element.id) === -1);
       return found.sort((a, b) => a.id - b.id);
     },
   },
@@ -87,9 +91,13 @@ export default {
         input(type="checkbox" :id="`fossil${item.id}`" :name="`fossil${item.id}`" :value="item.id" v-model="checked")
   .p 匯出資訊：
   .p.textarea {{io}}
-  .p 複製文字：
+  .p 複製文字：有的
   .p.textarea
     template(v-for="(item, index) in checkedFossils") {{item.name}}
+      br
+  .p 複製文字：沒有的
+  .p.textarea
+    template(v-for="(item, index) in notCheckedFossils") {{item.name}}
       br
 </template>
 
