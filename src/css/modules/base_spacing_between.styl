@@ -1,0 +1,31 @@
+/*
+參考 tailwindcss, 不過單位是採用 boostrap4
+https://tailwindcss.com/docs/space
+.space-x-{amount}
+.space-y-{amount}
+
+.space-x-{breakpointName}-{amount}
+.space-y-{breakpointName}-{amount}
+*/
+
+generateSpaceCode(breakpointName, name)
+  className = name == 'x' ? 'margin-left' : 'margin-top'
+  .space-{name}{breakpointName}-0 > * + *
+    {className}: 0;
+  .space-{name}{breakpointName}-1 > * + *
+    {className}: 0.25rem;
+  .space-{name}{breakpointName}-2 > * + *
+    {className}: 0.5rem;
+  .space-{name}{breakpointName}-3 > * + *
+    {className}: 1rem;
+  .space-{name}{breakpointName}-4 > * + *
+    {className}: 1.5rem;
+  .space-{name}{breakpointName}-5 > * + *
+    {className}: 3rem;
+
+generateSpaceCode('', 'x')
+generateSpaceCode('', 'y')
+for $breakpointName, $breakpointSize in $grid-breakpoints
+  +mediaUp($breakpointSize)
+    generateSpaceCode('-' + $breakpointName, 'x')
+    generateSpaceCode('-' + $breakpointName, 'y')

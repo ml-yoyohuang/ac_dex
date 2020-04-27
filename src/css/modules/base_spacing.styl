@@ -1,0 +1,41 @@
+/*
+擴充 bootstrap spacing
+https://getbootstrap.com/docs/4.4/utilities/spacing/
+.p-5px, .p-10px, .p-15px ------ .p-50px
+.px-5px, .px-10px, .px-15px ------ .p-50px
+
+*/
+
+$paddingMargin = range(5, 50, 5)
+
+generatePaddingMargenCode(cssName, value, breakpointName='')
+  className = substr(cssName, 0, 1)
+  valueToPX = unit(value, 'px')
+  .{className}t{breakpointName}-{value}px
+    {cssName}-top valueToPX !important
+  .{className}b{breakpointName}-{value}px
+    {cssName}-bottom valueToPX !important
+  .{className}y{breakpointName}-{value}px
+    {cssName}-top valueToPX !important
+    {cssName}-bottom valueToPX !important
+
+  .{className}l{breakpointName}-{value}px
+    {cssName}-left valueToPX !important
+  .{className}r{breakpointName}-{value}px
+    {cssName}-right valueToPX !important
+  .{className}x{breakpointName}-{value}px
+    {cssName}-left valueToPX !important
+    {cssName}-right valueToPX !important
+  
+  .{className}{breakpointName}-{value}px
+    {cssName} valueToPX !important
+
+for $value in $paddingMargin
+  generatePaddingMargenCode('padding', $value)
+  generatePaddingMargenCode('margin', $value)
+
+for $breakpointName, $breakpointSize in $grid-breakpoints
+  +mediaUp($breakpointSize)
+    for $value in $paddingMargin
+      generatePaddingMargenCode('padding', $value, '-' + $breakpointName)
+      generatePaddingMargenCode('margin', $value, '-' + $breakpointName)

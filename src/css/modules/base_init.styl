@@ -1,0 +1,44 @@
+/*
+// 這段 boostrap 內建了
+*
+  box-sizing border-box
+  &:before, &:after
+    box-sizing border-box
+*/
+
+img[src$='.png']
+  image-rendering optimizeQuality
+html, body
+  -webkit-overflow-scrolling touch
+  -webkit-tap-highlight-color rgba(0, 0, 0, 0)
+body
+  position relative
+  min-height 100vh
+  -webkit-font-smoothing antialiased
+  &.style-hidden
+    overflow hidden
+  &.style-no-scroll
+    position fixed
+    top 0
+    left 0
+    width 100%
+    -webkit-overflow-scrolling touch
+
+/* Selection */
+::-moz-selection
+  background #3cb28a
+  color white
+::selection
+  background #3cb28a
+  color white
+  
+/* Resets */
+a, a:hover
+  text-decoration none
+a, a:link, a:hover, a:active, a:visited
+  color inherit
+a:hover
+  color initial
+  text-decoration none
+*
+  outline none
