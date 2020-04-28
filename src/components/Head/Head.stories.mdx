@@ -1,0 +1,32 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import Head from './Head.vue';
+
+
+<Meta title='Head' component={
+  Head
+} />
+
+# Head
+
+Some **markdown** description, or whatever you want.
+
+<Story name='basic' height='auto'>{{
+  components: {
+    Head
+  },
+  data(){
+    return {}
+  },
+  methods:{
+  },
+  template: `
+    <Head />
+  `,
+}}</Story>
+
+
+## Props
+
+<Props of={
+  Head
+} />

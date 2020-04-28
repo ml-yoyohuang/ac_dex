@@ -1,11 +1,11 @@
 <script>
-import Fossil from '@/containers/Fossil/Fossil.vue';
+import Music from '@/containers/Music/Music.vue';
 import Head from '@/components/Head/Head.vue';
 
 export default {
   name: 'Home',
   components: {
-    Fossil,
+    Music,
     Head,
   },
 };
@@ -14,7 +14,7 @@ export default {
 <template lang="pug">
 .page-home
   Head
-  Fossil
+  Music
 </template>
 
 <style lang="stylus">
