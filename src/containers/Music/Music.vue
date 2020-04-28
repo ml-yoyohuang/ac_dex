@@ -27,7 +27,7 @@ export default {
     },
     io() {
       const obj = {
-        fossil: this.checked.sort((a, b) => a - b),
+        music: this.checked.sort((a, b) => a - b),
       };
       return obj;
     },
@@ -61,7 +61,7 @@ export default {
 
       if (typeof obj === 'object') {
         this.importMsg = '匯入完成';
-        this.checked = obj.fossil;
+        this.checked = obj.music;
         window.setTimeout(() => {
           vm.showImport = false;
           vm.importMsg = '';
@@ -76,7 +76,7 @@ export default {
 </script>
 
 <template lang="pug">
-.fossil.page-container
+.music.page-container
   .h1 音樂圖鑑
   .h6 點擊方塊勾選已有的CD
   .text-right
@@ -124,7 +124,7 @@ export default {
             small {{item.id}}.
             | {{item.name}}
           //- .p(v-if="showPrice") ${{item.price}}
-          input(type="checkbox" :id="`fossil${item.id}`" :name="`fossil${item.id}`" :value="item.id" v-model="checked")
+          input(type="checkbox" :id="`music${item.id}`" :name="`music${item.id}`" :value="item.id" v-model="checked")
     .p 匯出資訊：
     .p.textarea {{io}}
     .p 複製文字：有的
@@ -170,7 +170,7 @@ body
     padding-right 0.25em
 .msg
   background-color rgba(255,255,255,0.3)
-.fossil
+.music
   .block-import
     padding 1em 0
   .textarea
