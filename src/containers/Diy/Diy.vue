@@ -81,6 +81,10 @@ export default {
 .diy.page-container
   .h1 DIY圖鑑
   .h6 點擊方塊勾選已有的DIY
+  .h6 名稱可能有誤，項目可能有缺漏，暫無列入復活節活動DIY，
+    br
+    | 如發現誤字缺漏請
+    a.text-underline(href="https://github.com/ml-yoyohuang/ac_dex/issues/new" target="_blank") >>>至此處留言<<<
   .text-right
     .button(@click="showImport=!showImport" :class="{'is-active': showImport}") 匯入模式
   .block-import(v-if="showImport")
@@ -249,4 +253,6 @@ body
         width 100%
         height 100%
         border 5px solid #f8b75e
+.text-underline
+  text-decoration underline
 </style>
