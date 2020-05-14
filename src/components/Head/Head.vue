@@ -25,6 +25,7 @@ export default {
 .head.p-3
   router-link.button(to="/") 化石圖鑑
   router-link.button(to="/music") 音樂圖鑑
+  router-link.button(to="/diy") DIY圖鑑
 </template>
 
 <style lang="stylus">
